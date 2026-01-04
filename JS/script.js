@@ -26,9 +26,16 @@ const games = [
 ]
 
 
-let cart = []
+
+let cart = JSON.parse(localStorage.getItem('cart')) || []
+
+
+
+
+
 
 const CartContainer = document.getElementById('cart-count')
+CartContainer.textContent = cart.length;
 
 
 
@@ -64,8 +71,14 @@ games.forEach((game) => {
         }
 
         cart.push(game)
-        console.log(cart)
+        localStorage.setItem('cart', JSON.stringify(cart))
         CartContainer.textContent = cart.length;
+        console.log(CartContainer)
+        console.log(cart)
+
+
+
+
 
 
 
