@@ -16,7 +16,10 @@ A simple game store web application built using **HTML, CSS, and Vanilla JavaScr
 - JavaScript (DOM Manipulation, LocalStorage)
 
 ## 📸 Screenshots
-(Add screenshots here)
+### Home Page
+[Home page](screenshots/Home-Page.png)
+### Cart Page
+[Cart](screenshots/Cart-page.png)
 
 ## 📌 Future Improvements
 - Cart total price
