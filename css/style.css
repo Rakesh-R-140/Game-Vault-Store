@@ -23,23 +23,20 @@ body {
 
 
 
-::placeholder {
-    color: white;
-}
+
 
 .cart-container {
     display: flex;
     align-items: center;
     column-gap: 12px;
+
     justify-content: center;
 
 
 
 }
 
-.cart-img {
-    height: 30px;
-}
+
 
 .cart {
     font-size: 18px;
@@ -48,12 +45,10 @@ body {
 /* Game cards container */
 .game-container {
     display: grid;
-    grid-template-columns: 230px 230px 230px 230px;
-    gap: 20px;
-    padding-left: 255px;
-    padding-right: 225px;
-    font-weight: 400;
-    letter-spacing: 0.2px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 25px;
+
+    padding: 0 80px;
 
 
 }
@@ -63,6 +58,7 @@ body {
     background-color: rgb(16, 16, 20);
     border-radius: 8px;
     /* padding: 15px; */
+
 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -237,4 +233,20 @@ body {
     color: white;
     text-decoration: none;
     font-weight: 600;
+}
+
+.game-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.qty-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

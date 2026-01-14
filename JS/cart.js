@@ -29,16 +29,20 @@ function CartRender() {
 
         card.innerHTML = `
     <img src="${game.image}">
+    
     <h3>${game.name}</h3>
     <p>₹${game.price}</p>
+    
 
     <div class="qty-controls">
+    <div class="quantity-option" >
         <button class="decrease">−</button>
         <span>${game.Quantity}</span>
         <button class="increase">+</button>
-    </div>
+   </div>
 
     <button class="remove-btn">Remove</button>
+     </div>
 `;
 
 
