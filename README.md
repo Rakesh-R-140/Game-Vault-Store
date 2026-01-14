@@ -17,7 +17,7 @@ A simple game store web application built using **HTML, CSS, and Vanilla JavaScr
 
 ## 📸 Screenshots
 ### Home Page
-![Home page](screenshots/Home-page.png)
+![Home page](screenshots/home-page.png)
 ### Cart Page
 ![Cart](screenshots/Cart-page.png)
 
