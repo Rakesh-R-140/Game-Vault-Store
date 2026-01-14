@@ -118,7 +118,7 @@ function renderGames(gameList) {
 
         card.innerHTML =
             `
-        <img src="${game.image}">
+        <img src="${game.image} alt="${game.name}"">
         <div
          class="game-info" >
          <p>
