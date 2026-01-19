@@ -80,6 +80,7 @@ function CartRender() {
             }
             updateCart()
 
+
             // if (cart.length === 0) {
             //     cartmessage.innerHTML = ' <p class="cart-message">Cart is empty !</p>  <img class="cart-empty-icon" src="empty-cart.png" >'
             // }
@@ -103,15 +104,46 @@ function CartRender() {
 
 
         cartContainer.appendChild(card)
+        updatetotal()
     });
 
 }
 
 function updateCart() {
     localStorage.setItem('cart', JSON.stringify(cart))
+    updatetotal()
     CartRender()
 
+
 }
+
+
+
+
+function updatetotal() {
+
+
+    totalcost = cart.reduce((sum, item) => sum + item.price * item.Quantity, 0)
+    document.getElementById('cart-total').innerHTML = totalcost
+
+
+
+}
+
+const clearButton = document.getElementById('clear-cart')
+clearButton.addEventListener('click', () => {
+    const confirmClear = confirm("Are you sure you want to clear the cart?");
+
+    if (!confirmClear) return;
+
+
+    cart = [];
+    localStorage.removeItem('cart');
+    updatetotal()
+    CartRender();
+
+})
+
 
 
 
