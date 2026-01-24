@@ -3,6 +3,11 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const cartContainer = document.getElementById("cart-container");
 
 const cartmessage = document.querySelector('.cart-message-container')
+const clearButton = document.getElementById('clear-cart')
+const totalCost = document.getElementById('cart-total')
+
+
+
 function cartMessages() {
     if (cart.length === 0) {
         cartmessage.innerHTML = ' <p class="cart-message">Cart is empty !</p>  <img class="cart-empty-icon" src="empty-cart.png" >'
@@ -45,58 +50,40 @@ function CartRender() {
      </div>
 `;
 
-
-
         const deleteBtn = card.querySelector('.remove-btn')
-
-        deleteBtn.addEventListener('click', () => {
-
-            cart = cart.filter(item => item.id !== game.id)
-
-
-            updateCart()
-
-
-
-            // if (cart.length === 0) {
-            //     cartmessage.innerHTML = ' <p class="cart-message">Cart is empty !</p>  <img class="cart-empty-icon" src="empty-cart.png" >'
-            // }
-
-
-
-        })
-
         const decreaseBtn = card.querySelector('.decrease')
         const increaseBtn = card.querySelector('.increase')
 
-        decreaseBtn.addEventListener('click', () => {
-            if (game.Quantity > 1) {
 
-                game.Quantity--
-            }
-
-            else {
-                cart = cart.filter(item => item.id !== game.id)
-            }
-            updateCart()
-
-
-            // if (cart.length === 0) {
-            //     cartmessage.innerHTML = ' <p class="cart-message">Cart is empty !</p>  <img class="cart-empty-icon" src="empty-cart.png" >'
-            // }
-
-
-        })
+        increaseBtn.onclick = () => updateQuantity(game.id, 1)
+        decreaseBtn.onclick = () => updateQuantity(game.id, -1)
+        deleteBtn.onclick = () => remove(game.id)
 
 
 
-        increaseBtn.addEventListener('click', () => {
-            game.Quantity++;
-            updateCart()
 
 
 
-        })
+
+
+
+
+        // decreaseBtn.addEventListener('click', () => {
+
+        //     if (game.Quantity > 1) {
+
+        //         game.Quantity--
+        //     }
+
+        //     else {
+        //         cart = cart.filter(item => item.id !== game.id)
+        //     }
+        //     updateCart()
+
+
+        // })
+
+
 
 
 
@@ -104,14 +91,90 @@ function CartRender() {
 
 
         cartContainer.appendChild(card)
-        updatetotal()
+        updateTotal()
+
     });
+
+
 
 }
 
-function updateCart() {
+
+function getgrandtotal() {
+    const subtotal = calculateTotal()
+
+
+    const Tax = Math.round(subtotal * 0.18)
+    const delivery = cart.length > 0 ? 60 : 0
+    const grandtotal = Tax + subtotal + delivery
+    return grandtotal;
+}
+
+
+function updateTotal() {
+
+    const subtotal = calculateTotal()
+
+
+    const Tax = Math.round(subtotal * 0.18)
+    const delivery = cart.length > 0 ? 60 : 0
+    const grandtotal = Tax + subtotal + delivery
+
+
+
+    document.getElementById('subtotal').textContent = subtotal;
+    document.getElementById('tax').textContent = Tax;
+    document.getElementById('delivery').textContent = delivery;
+
+
+
+    totalCost.textContent = grandtotal
+}
+
+
+
+
+function updateQuantity(id, change) {
+
+    item = cart.find(game => game.id === id)
+
+    if (!item) return;
+
+    item.Quantity += change
+    if (item.Quantity <= 0) {
+        remove(id)
+
+    }
+
+    saveCart()
+
+
+}
+
+
+function remove(id) {
+
+    cart = cart.filter(game => game.id !== id)
+
+
+
+
+    saveCart()
+
+
+}
+
+
+
+
+
+
+
+
+
+function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart))
-    updatetotal()
+    updateTotal()
     CartRender()
 
 
@@ -120,18 +183,20 @@ function updateCart() {
 
 
 
-function updatetotal() {
+function calculateTotal() {
 
 
-    totalcost = cart.reduce((sum, item) => sum + item.price * item.Quantity, 0)
-    document.getElementById('cart-total').innerHTML = totalcost
+    const totalcost = cart.reduce((sum, item) => sum + item.price * item.Quantity, 0)
+    return totalcost;
 
 
 
 }
 
-const clearButton = document.getElementById('clear-cart')
+
 clearButton.addEventListener('click', () => {
+    if (cart.length === 0) return alert('cart is already cleared');
+
     const confirmClear = confirm("Are you sure you want to clear the cart?");
 
     if (!confirmClear) return;
@@ -139,10 +204,43 @@ clearButton.addEventListener('click', () => {
 
     cart = [];
     localStorage.removeItem('cart');
-    updatetotal()
+    saveCart()
     CartRender();
 
 })
+
+
+
+function checkoutitem() {
+
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+
+
+    let total = getgrandtotal()
+
+    const confirmCheckout = confirm(`are you sure placing your order?? ${total}`)
+
+
+    if (!confirmCheckout) return;
+
+    cart = [];
+    localStorage.removeItem('cart');
+    saveCart()
+    CartRender();
+
+
+    alert("🎉 Order placed successfully!")
+
+
+
+
+
+}
+
 
 
 

@@ -130,11 +130,20 @@ function renderGames(gameList) {
         </div> 
       <button  class="${existsInCart ? 'added-to-cart' : ''}"> 
   ${ComingSoon ? "Remind Me" : (existsInCart ? "Add More" : "Add to Cart")}
+ 
+        
+
     </button >  
 
     `;
 
         const button = card.querySelector("button");
+
+        if (ComingSoon) {
+            button.disabled = true;
+            button.classList.add('disabled-btn')
+            console.log('diabled')
+        }
 
 
 

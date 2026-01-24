@@ -16,13 +16,50 @@
     </header>
     <div class="cart-message-container"></div>
 
-    <main class="game-container" id="cart-container">
-        <!-- Cart items here -->
-    </main>
-    <div class="cart-summary">
-        <h2>Total: ₹<span id="cart-total">0</span></h2>
-        <button id="clear-cart">Clear Cart</button>
+    <div class="cart-page">
+
+        <main class="game-container" id="cart-container">
+            <!-- Cart items here -->
+        </main>
+
+        <div class="cart-summary">
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span>₹<span id="subtotal">0</span></span>
+            </div>
+
+            <div class="summary-row">
+                <span>Tax (18%)</span>
+                <span>₹<span id="tax">0</span></span>
+            </div>
+
+            <div class="summary-row">
+                <span>Delivery</span>
+                <span>₹<span id="delivery">0</span></span>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="summary-row grand-total">
+                <span>Total</span>
+                <span>₹<span id="cart-total">0</span></span>
+            </div>
+
+            <!-- Clear Cart Button -->
+            <button id="clear-cart" class="clear-cart-btn">Clear Cart</button>
+
+            <!-- Checkout Button -->
+            <button class="checkout-btn" onclick="checkoutitem()">Checkout</button>
+        </div>
+
+
+
     </div>
+
+
+
 
 
     <script src="js/cart.js"></script>
