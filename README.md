@@ -1,27 +1,24 @@
-# 🎮 Game Vault – JavaScript Game Store
+# Game Vault 🎮
 
-A simple game store web application built using **HTML, CSS, and Vanilla JavaScript**.
+Game Vault is a frontend game store web application built using HTML, CSS, and JavaScript.
 
-## 🚀 Features
-- Game listing with search functionality
-- Add to cart system
-- Increase / decrease quantity
-- Cart count update
-- Persistent cart using LocalStorage
-- Coming Soon games handling
+## Features
+- Browse games
+- Add to cart
+- Dynamic cart calculations (Subtotal, Tax, Delivery)
+- Order placement
+- Order history with status (Placed / Delivered)
+- Search and filter orders
 
-## 🛠️ Technologies Used
-- HTML5
-- CSS3
-- JavaScript (DOM Manipulation, LocalStorage)
+## Tech Stack
+- HTML
+- CSS
+- JavaScript
+- LocalStorage
 
-## 📸 Screenshots
-### Home Page
-![Home page](screenshots/home-page.png)
-### Cart Page
-![Cart](screenshots/Cart-page.png)
+## Project Status
+🚧 In progress – more features and UI improvements coming soon.
 
-## 📌 Future Improvements
-- Cart total price
-- Checkout page
-- Responsive design
+## Author
+Rakesh
+
