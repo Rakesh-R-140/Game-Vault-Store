@@ -35,7 +35,7 @@ function renderOrder(gameList) {
                     : ""
                 }
 
-${`<button  class="delete-btn" onclick="deleteOrder(${orders.length - 1 - index}) "> delete  </button>  `
+${`<button  class="delete-btn" onclick="deleteOrder(${orders.length - 1 - index}) "> Delete  </button>  `
 
                 }
 

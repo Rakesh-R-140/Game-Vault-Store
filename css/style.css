@@ -8,6 +8,7 @@ body {
     background: #0f0f10;
     font-family: 'Montserrat', sans-serif;
     color: #FFFFFF;
+    text-align: center;
 }
 
 /* Header */
@@ -360,7 +361,8 @@ body {
     gap: 15px;
 }
 
-.continue-btn {
+.continue-btn,
+.vieworder-btn {
     margin-top: 20px;
     padding: 12px 25px;
     background: linear-gradient(135deg, #00ff9c, #00d4ff);
@@ -370,72 +372,166 @@ body {
     font-weight: 600;
 }
 
-.order-card {
-    background: #1c1c1c;
-    padding: 15px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    color: white;
-    border-left: 4px solid #00ff99;
+
+.home-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 10px 16px;
+    background-color: #323232;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    z-index: 1000;
 }
 
+.home-btn:hover {
+    background-color: #2563eb;
+}
+
+/* ===== Page Title ===== */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* ===== Search & Filter Center ===== */
+#searchInput,
+#statusFilter {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    background: #1f1f22;
+    margin: 0 6px;
+    color: white;
+}
+
+#searchInput {
+    width: 240px;
+}
+
+#searchInput:focus,
+#statusFilter:focus {
+    outline: none;
+    border-color: #2563eb;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); */
+    background: #2c2a2a;
+}
+
+/* center input + select */
+#searchInput,
+#statusFilter {
+    display: inline-block;
+}
+
+body>input,
+body>select {
+    display: inline-block;
+}
+
+/* wrapper effect using text-align */
+
+
+/* ===== Orders Container ===== */
+.orders-container {
+    max-width: 900px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}
+
+/* ===== Order Card ===== */
+.order-card {
+    background: #1c1c1c;
+    padding: 18px 20px;
+    border-radius: 12px;
+    border-left: 5px solid #00ff99;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.order-card h3 {
+    margin: 0 0 6px;
+}
+
+.order-card p {
+    margin: 4px 0;
+    color: #cfcfcf;
+    font-size: 14px;
+}
+
+/* ===== Order Items ===== */
+.order-items {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    align-items: center;
+    background: #262626;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* ===== Status ===== */
 .status {
     font-weight: bold;
 }
 
 .status.Placed {
-    color: orange;
+    color: #f59e0b;
 }
 
 .status.Delivered {
-    color: green;
+    color: #22c55e;
 }
 
-.status.Placed {
-    color: orange;
-    font-weight: bold;
+/* ===== Action Buttons Container (optional but recommended) ===== */
+.order-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
 }
 
-.status.Delivered {
-    color: green;
-    font-weight: bold;
-}
-
+/* ===== Mark as Delivered Button ===== */
 .deliver-btn {
-    margin-top: 10px;
-    padding: 6px 12px;
-    background: green;
-    color: white;
+    padding: 8px 14px;
+    background: #22c55e;
+    color: #000;
     border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
-    border-radius: 5px;
+    transition: all 0.2s ease;
 }
 
+.deliver-btn:hover {
+    background: #16a34a;
+    transform: scale(1.03);
+}
+
+/* ===== Delete Button ===== */
 .delete-btn {
-    margin-top: 10px;
-    margin-left: 10px;
-    padding: 6px 12px;
-    background: red;
-    color: white;
+    padding: 8px 14px;
+    background: #ef4444;
+    color: #fff;
     border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
-    border-radius: 5px;
+    transition: all 0.2s ease;
 }
 
-
-
-.search-input,
-.statusFilter {
-    background-color: #eef6ff;
-    /* C3 light blue */
-    border: 1px solid #c7ddff;
-    padding: 10px 12px;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-.search-input:focus {
-    background-color: #ffffff;
-    border-color: #2563eb;
-    outline: none;
+.delete-btn:hover {
+    background: #dc2626;
+    transform: scale(1.03);
 }
