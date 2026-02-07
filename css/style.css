@@ -346,3 +346,96 @@ body {
     background: #d32f2f;
     transform: translateY(-2px);
 }
+
+
+.success-container {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 15px;
+}
+
+.continue-btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #00ff9c, #00d4ff);
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+.order-card {
+    background: #1c1c1c;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    color: white;
+    border-left: 4px solid #00ff99;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.Placed {
+    color: orange;
+}
+
+.status.Delivered {
+    color: green;
+}
+
+.status.Placed {
+    color: orange;
+    font-weight: bold;
+}
+
+.status.Delivered {
+    color: green;
+    font-weight: bold;
+}
+
+.deliver-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-btn {
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 6px 12px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+.search-input,
+.statusFilter {
+    background-color: #eef6ff;
+    /* C3 light blue */
+    border: 1px solid #c7ddff;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.search-input:focus {
+    background-color: #ffffff;
+    border-color: #2563eb;
+    outline: none;
+}

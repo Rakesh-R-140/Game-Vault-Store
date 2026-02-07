@@ -209,10 +209,10 @@ clearButton.addEventListener('click', () => {
 
 })
 
+document.getElementById('placeOrderBtn').addEventListener('click', (placeOrder))
 
-
-function checkoutitem() {
-
+function placeOrder() {
+    console.log('order placed!!')
     if (cart.length === 0) {
         alert("Your cart is empty!");
         return;
@@ -227,13 +227,42 @@ function checkoutitem() {
 
     if (!confirmCheckout) return;
 
-    cart = [];
-    localStorage.removeItem('cart');
-    saveCart()
-    CartRender();
+
+    const subtotal = calculateTotal()
 
 
-    alert("🎉 Order placed successfully!")
+    const Tax = Math.round(subtotal * 0.18)
+    const delivery = cart.length > 0 ? 60 : 0
+    const grandtotal = Tax + subtotal + delivery
+
+
+    let orders = getOrder()
+
+    let order = {
+        orderId: "ORD" + Date.now(),
+        items: cart,
+        total: grandtotal,
+        date: new Date().toLocaleString(),
+        status: 'Placed'
+
+    }
+    orders.push(order)
+
+    saveOrder(orders)
+
+
+
+
+
+
+
+    console.log(orders)
+
+    cart = []
+    localStorage.removeItem('cart')
+    window.location.href = "success.html";
+
+
 
 
 
@@ -241,7 +270,14 @@ function checkoutitem() {
 
 }
 
+// function saveOrder(orders) {
+//     console.log(orders)
+//     localStorage.setItem("order", JSON.stringify(orders));
+// }
 
+// function getOrder() {
+//     return JSON.parse(localStorage.getItem("order")) || []
+// }
 
 
 

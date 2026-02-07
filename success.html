@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Order Success</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="success-box">
+        <h1>🎉 Order Placed Successfully!</h1>
+        <p>Thank you for your purchase.</p>
+
+        <button onclick="goToOrders()">View My Orders</button>
+        <button onclick="goToHome()">Continue Shopping</button>
+    </div>
+
+    <script>
+        function goToOrders() {
+            window.location.href = "orders.html";
+        }
+
+        function goToHome() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+
+</html>
