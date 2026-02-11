@@ -1,14 +1,16 @@
 let orders = getOrder();
+const STATUS_FLOW = ["Placed", "Packed", "Shipped", "Delivered"];
+
 
 function renderOrder(gameList) {
     const container = document.getElementById("ordersContainer");
 
-    if (!Array.isArray(orders) || orders.length === 0) {
+    if (!Array.isArray(gameList) || gameList.length === 0) {
         container.innerHTML = "<p>No orders yet.</p>";
     } else {
         container.innerHTML = "";
 
-        gameList.reverse().forEach((order, index) => {
+        [...gameList].reverse().forEach((order, index) => {
             const div = document.createElement("div");
             div.className = "order-card";
 
@@ -28,16 +30,29 @@ function renderOrder(gameList) {
                 `).join("")}
             </div>
 
-            ${order.status === "Placed"
-                    ? `<button class="deliver-btn" onclick="markDelivered(${orders.length - 1 - index})">
-                        Mark as Delivered
-                       </button>`
-                    : ""
-                }
+            
+    <div class="order-actions">
+               ${order.status !== "Delivered" ? `
+<button class="deliver-btn"
+    onclick="updateOrderStatus('${order.orderId}')">
+    Move to Next Stage
+</button>` : `
+<span class="completed">✅ Order Completed</span>
+`}
 
-${`<button  class="delete-btn" onclick="deleteOrder(${orders.length - 1 - index}) "> Delete  </button>  `
+            
+           
+             <button class="delete-btn" onclick="deleteOrder('${order.orderId}')">Delete</button>
 
-                }
+
+
+<button class="view-btn"
+    onclick="viewOrderDetails('${order.orderId}')">
+    View Details
+</button>
+
+
+                
 
         `;
 
@@ -57,29 +72,49 @@ ${`<button  class="delete-btn" onclick="deleteOrder(${orders.length - 1 - index}
 
 
 
-function markDelivered(index) {
+function updateOrderStatus(orderId) {
     let orders = getOrder();
-    orders[index].status = "Delivered";
+
+    orders = orders.map(order => {
+        console.log(order)
+        // if (!order) return order
+
+        if (order.orderId === orderId) {
+            let currentIndex = STATUS_FLOW.indexOf(order.status)
+            if (currentIndex < STATUS_FLOW.length - 1) {
+                order.status = STATUS_FLOW[currentIndex + 1]
+
+            }
+        }
+        return order
+    })
+
+
+
     saveOrder(orders);
-    location.reload();
+    renderOrder(orders)
 }
 
 
-function deleteOrder(index) {
+function deleteOrder(Id) {
     const confirmdelete = confirm('Are you sure want to delete this order??')
     if (!confirmdelete) return;
 
     let orders = getOrder()
-    orders.splice(index, 1)
+
+    orders = orders.filter((order) => (order.orderId !== Id))
+
+
     saveOrder(orders)
-    location.reload();
+
+    renderOrder(orders)
 
 }
 function searchOrders() {
     const ordervalue = document.getElementById('searchInput').value
     const statusValue = document.getElementById("statusFilter").value;
 
-
+    const orders = getOrder();
     const filterorder = orders.filter((order) => {
         let matchId = order.orderId.includes(ordervalue)
         let matchstatus = statusValue === '' || statusValue === order.status
@@ -92,5 +127,14 @@ function searchOrders() {
 
 }
 
+function viewOrderDetails(orderId) {
+    console.log('hellow')
+    window.location.href = `order-details.html?orderId=${orderId}`;
+}
+
 console.log("Order History Loaded");
+
+
+
+
 renderOrder(orders)

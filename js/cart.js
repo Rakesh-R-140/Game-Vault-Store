@@ -48,6 +48,9 @@ function CartRender() {
 
     <button class="remove-btn">Remove</button>
      </div>
+
+
+     
 `;
 
         const deleteBtn = card.querySelector('.remove-btn')
@@ -64,6 +67,15 @@ function CartRender() {
 
 
 
+        {
+            if (game.Quantity === 1) {
+                decreaseBtn.classList.add("disabled-btn");
+                decreaseBtn.disabled = true;
+            } else {
+                decreaseBtn.classList.remove("disabled-btn");
+                decreaseBtn.disabled = false;
+            }
+        }
 
 
 
@@ -91,11 +103,11 @@ function CartRender() {
 
 
         cartContainer.appendChild(card)
-        updateTotal()
+
 
     });
 
-
+    updateTotal()
 
 }
 
@@ -136,13 +148,13 @@ function updateTotal() {
 
 function updateQuantity(id, change) {
 
-    item = cart.find(game => game.id === id)
+    let item = cart.find(game => game.id === id)
 
     if (!item) return;
 
     item.Quantity += change
-    if (item.Quantity <= 0) {
-        remove(id)
+    if (item.Quantity < 1) {
+        item.Quantity = 1
 
     }
 

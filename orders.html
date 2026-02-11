@@ -12,7 +12,15 @@
 
 
 <body>
-    <a href="index.html" class="home-btn">🏠 Home</a>
+    <nav class="navbar">
+        <h2 class="logo">Game Vault</h2>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+            <a href="orders.html">Orders</a>
+        </div>
+    </nav>
+
 
 
     <h2 style="text-align:center;margin-top:20px;">📦 My Orders</h2>
@@ -25,13 +33,9 @@
     </select>
 
     <div id="ordersContainer" class="orders-container"></div>
-
+    <script src="js/storage.js"></script>
+    <script src="js/orders.js"></script>
 </body>
 
+
 </html>
-
-
-
-
-<script src="js/storage.js"></script>
-<script src="js/orders.js"></script>
