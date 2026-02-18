@@ -555,3 +555,328 @@ body>select {
     color: inherit;
     font-weight: 500;
 }
+
+/* ================= ORDER DETAILS PAGE ================= */
+
+.order-details-page {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #121212;
+    padding: 25px 30px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Headings */
+.order-details-page h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #00ff9c;
+}
+
+.order-details-page h4 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-bottom: 1px solid #2a2a2a;
+    padding-bottom: 6px;
+    color: #ffffff;
+}
+
+/* Order info text */
+.order-details-page p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #cfcfcf;
+}
+
+/* ================= ITEMS LIST ================= */
+
+.order-details-page>div {
+    background: #1f1f22;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Item name */
+.order-details-page>div p:first-child {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Qty & price */
+.order-details-page>div p {
+    font-size: 13px;
+    color: #c2c2c2;
+}
+
+/* ================= ORDER STATUS COLORS ================= */
+
+.order-details-page p:nth-child(3) {
+    font-weight: 600;
+}
+
+.order-details-page p:nth-child(3)::after {
+    margin-left: 6px;
+}
+
+.order-details-page p:nth-child(3):contains("Placed") {
+    color: #f59e0b;
+}
+
+.order-details-page p:nth-child(3):contains("Delivered") {
+    color: #22c55e;
+}
+
+/* ================= EMPTY STATE ================= */
+
+.order-details-page p:only-child {
+    text-align: center;
+    font-size: 18px;
+    color: #ff6b6b;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 600px) {
+    .order-details-page {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .order-details-page>div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+}
+
+.back-btn {
+    margin-top: 25px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #4f46e5;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background: #4338ca;
+}
+
+.order-timeline {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.timeline-step {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    position: relative;
+}
+
+.timeline-step::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -50%;
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    z-index: -1;
+}
+
+.timeline-step:last-child::after {
+    display: none;
+}
+
+.timeline-step.completed {
+    background: #4caf50;
+    color: white;
+}
+
+.timeline-step.active {
+    background: #2196f3;
+    color: white;
+}
+
+.timeline-step.upcoming {
+    background: #e0e0e0;
+    color: #555;
+}
+
+.cancel-btn {
+    margin: 15px 0;
+    padding: 12px 18px;
+    background: #e53935;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background: #c62828;
+}
+
+.cancel-disabled {
+    color: #999;
+    margin: 15px 0;
+    font-weight: 500;
+}
+
+.view-btn {
+    margin: 15px 0;
+    padding: 12px 18px;
+    background: #505bd2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    background: linear-gradient(135deg, #4338ca, #4f46e5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(79, 70, 229, 0.35);
+}
+
+.view-btn:active {
+    transform: scale(0.97);
+}
+
+
+
+.order-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+
+
+}
+
+.order-actions button {
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+/* .deliver-btn {
+    background: #22c55e;
+    color: white;
+}
+
+.view-btn {
+    background: #4f46e5;
+    color: white;
+}
+
+.delete-btn {
+    background: #ef4444;
+    color: white;
+} */
+
+
+
+.order-actions button {
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.status.Cancelled {
+    color: red;
+    font-weight: bold;
+}
+
+.completed {
+    color: #22c55e;
+    font-weight: 600;
+}
+
+.cancelled {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.order-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.order-timeline {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    gap: 10px;
+}
+
+.timeline-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.timeline-step span {
+    display: inline-block;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+    background: #2a2a2a;
+    color: #aaa;
+    font-weight: 500;
+}
+
+.timeline-step.active span {
+    background: #22c55e;
+    color: #000;
+}
+
+/* connecting line */
+.timeline-step::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    width: 20px;
+    height: 2px;
+    background: #2a2a2a;
+}
+
+.timeline-step.active::after {
+    background: #22c55e;
+}
+
+.timeline-step:last-child::after {
+    display: none;
+}

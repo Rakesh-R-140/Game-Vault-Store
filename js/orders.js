@@ -31,25 +31,32 @@ function renderOrder(gameList) {
             </div>
 
             
-    <div class="order-actions">
-               ${order.status !== "Delivered" ? `
-<button class="deliver-btn"
-    onclick="updateOrderStatus('${order.orderId}')">
-    Move to Next Stage
-</button>` : `
-<span class="completed">✅ Order Completed</span>
-`}
+  <div class="order-actions">
 
-            
+    ${order.status !== "Delivered" && order.status !== "Cancelled" ? `
+        <button class="deliver-btn"
+            onclick="updateOrderStatus('${order.orderId}')">
+            Move to Next Stage
+        </button>
+    ` : ""}
+
+  
+
+    <button class="view-btn"
+        onclick="viewOrderDetails('${order.orderId}')">
+        View Details
+    </button>
+ <button class="delete-btn" onclick="deleteOrder('${order.orderId}')">Delete</button>
+</div>
+
            
-             <button class="delete-btn" onclick="deleteOrder('${order.orderId}')">Delete</button>
+            
 
 
 
-<button class="view-btn"
-    onclick="viewOrderDetails('${order.orderId}')">
-    View Details
-</button>
+
+
+
 
 
                 
@@ -75,12 +82,15 @@ function renderOrder(gameList) {
 function updateOrderStatus(orderId) {
     let orders = getOrder();
 
+
+
     orders = orders.map(order => {
-        console.log(order)
-        // if (!order) return order
+
+        if (!order) return order
 
         if (order.orderId === orderId) {
             let currentIndex = STATUS_FLOW.indexOf(order.status)
+            console.log(currentIndex)
             if (currentIndex < STATUS_FLOW.length - 1) {
                 order.status = STATUS_FLOW[currentIndex + 1]
 
@@ -100,16 +110,14 @@ function deleteOrder(Id) {
     const confirmdelete = confirm('Are you sure want to delete this order??')
     if (!confirmdelete) return;
 
-    let orders = getOrder()
+    let orders = getOrder();
 
-    orders = orders.filter((order) => (order.orderId !== Id))
+    orders = orders.filter(order => order && order.orderId !== Id);
 
-
-    saveOrder(orders)
-
-    renderOrder(orders)
-
+    saveOrder(orders);
+    renderOrder(orders);
 }
+
 function searchOrders() {
     const ordervalue = document.getElementById('searchInput').value
     const statusValue = document.getElementById("statusFilter").value;

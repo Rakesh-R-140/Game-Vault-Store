@@ -125,6 +125,8 @@ function renderGames(gameList) {
         ${game.name}
         </p>
      <p>
+
+     
     ${ComingSoon ? 'Arriving Soon!!' : '₹' + game.price}
     </p>
         </div> 
@@ -147,46 +149,10 @@ function renderGames(gameList) {
 
 
 
+        button.addEventListener('click', () => {
+            AddToCart(game)
+        })
 
-        button.addEventListener("click", () => {
-
-
-
-
-
-            if (game.price === 'Coming soon!') {
-                return alert('We will inform You when the game is Arrived!!');
-            }
-
-            const alreadyExisting = cart.find(item => item.id === game.id)
-            if (alreadyExisting) {
-                alreadyExisting.Quantity += 1;
-
-            }
-
-
-
-            else {
-                cart.push({
-                    ...game, Quantity: 1
-
-
-                })
-
-            }
-
-
-
-
-
-
-            updateUI()
-            renderGames(gameList)
-
-
-
-
-        });
 
 
 
@@ -212,3 +178,24 @@ searchInput.addEventListener("input", (e) => {
     renderGames(gameSearch)
 });
 
+function AddToCart(game) {
+
+    if (game.price === 'Coming soon!') {
+        alert('We will inform You when the game is Arrived!!');
+        return;
+    }
+
+    const alreadyExisting = cart.find(item => item.id === game.id);
+
+    if (alreadyExisting) {
+        alreadyExisting.Quantity += 1;
+    } else {
+        cart.push({
+            ...game,
+            Quantity: 1
+        });
+    }
+
+    updateUI();
+    renderGames(games);
+}

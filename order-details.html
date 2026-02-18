@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title>Order Details</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <h2>Order Details</h2>
-    <div id="orderDetails"></div>
+    <nav class="navbar">
+        <h2 class="logo">Game Vault</h2>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="orders.html">Orders</a>
+        </div>
+    </nav>
 
+    <!-- MAIN CONTAINER USED BY JS -->
+    <div id="orderDetails" class="order-details-page">
+        <!-- JS will inject content here -->
+    </div>
 
     <script src="js/orders-details.js"></script>
+    <script src="js/storage.js"></script>
 </body>
 
 </html>
